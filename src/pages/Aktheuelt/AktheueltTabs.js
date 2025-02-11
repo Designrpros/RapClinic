@@ -8,9 +8,28 @@ const TabsContainer = styled.div`
   gap: 1.5rem;
   padding: 1.5rem 0;
   margin-bottom: 2.5rem;
-  justify-content: center;
+  justify-content: flex-start;  /* Align to left to enable smooth scrolling */
   align-items: center;
   border-bottom: 2px solid ${({ theme }) => theme.borderColor || "#ddd"};
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: ${({ theme }) => theme.primaryColor || "#007BFF"} transparent;
+
+  /* Enable smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  
+  /* Hide scrollbar on mobile */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ensure full width scroll */
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
 `;
 
 const TabButton = styled.button`
@@ -35,6 +54,12 @@ const TabButton = styled.button`
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease;
   box-shadow: ${({ active }) =>
     active ? "0px 4px 10px rgba(0, 0, 0, 0.2)" : "none"};
+  
+  /* Make tabs take full width on smaller screens */
+  @media (max-width: 768px) {
+    min-width: 120px;
+    flex: 0 0 auto;
+  }
 
   &:hover {
     background: ${({ theme }) => theme.primaryColor || "#0056b3"};
