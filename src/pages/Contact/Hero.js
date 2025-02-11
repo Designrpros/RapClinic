@@ -55,6 +55,30 @@ const Title = styled.h1`
   font-weight: bold;
   margin-bottom: 40px;
   color: ${({ theme }) => theme.textColor};
+  text-align: center;
+  line-height: 1.2;
+  word-wrap: break-word;
+
+  /* Responsive Scaling */
+  @media (max-width: 1200px) {
+    font-size: 65px;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 55px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 45px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 28px;
+  }
 `;
 
 // Define a bounce keyframes animation for the arrow
