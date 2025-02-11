@@ -13,7 +13,7 @@ const TabsContainer = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.borderColor || "#ddd"};
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: ${({ theme }) => theme.primaryColor || "#007BFF"} transparent;
-
+  
   /* Enable smooth scrolling on mobile */
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
@@ -30,6 +30,14 @@ const TabsContainer = styled.div`
     white-space: nowrap;
     overflow-x: scroll;
   }
+
+  /* Sticky positioning under toolbar */
+  position: sticky;
+  top: 60px; /* Adjust based on toolbar height */
+  background: ${({ theme }) => theme.background}; /* Match theme */
+  z-index: 999; /* Ensure it's above content */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `;
 
 const TabButton = styled.button`
